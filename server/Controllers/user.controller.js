@@ -1,13 +1,14 @@
 import User from '../models/user.model.js'
 import bcrypt from "bcryptjs";
 import { generateToken } from '../libs/generateToken.js';
+import cloudinary from '../libs/cloudinary.js';
 
 
 export const registerUser=async(req,res)=>{
-  const{email,password}=req.body;
+  const{email,password,username,profilepic,role}=req.body;
   try {
-    if(!email || !password){
-     return res.status(401).json({error:"Both fields required"});
+    if(!email || !password || !username || !role){
+     return res.status(401).json({error:"All fields except picture required required"});
     }
     const user = await User.findOne({email});
     if(user){
@@ -15,9 +16,17 @@ export const registerUser=async(req,res)=>{
     }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+    let imageUrl;
+    if (profilepic) {
+      const uploadResponse = await cloudinary.uploader.upload(profilepic);
+      imageUrl = uploadResponse.secure_url;
+    }
     const newUser = new User({
       password:hashedPassword,
       email,
+      username,
+      profilepic:imageUrl,
+      role,
     });
     if (newUser) {
       generateToken(newUser._id, res);
@@ -26,6 +35,9 @@ export const registerUser=async(req,res)=>{
      return res.status(201).json({
         _id: newUser._id,
         email: newUser.email,
+        username:newUser.username,
+        profilepic:newUser.profilepic,
+        role:newUser.role,
       });
     }else {
       res.status(400).json({ message: "Invalid user data" });

@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/user.routes.js'
 import { ConnectDb } from './utils/connectDB.js';
 import todoRoutes from './routes/todo.routes.js'
+import sessionRoutes from './routes/sessions.route.js'
 import cookieParser from 'cookie-parser';
 
 
@@ -31,6 +32,7 @@ app.get('/',(req,res)=>{
 
 app.use('/api/users',userRoutes)
 app.use('/api/todos',todoRoutes)
+app.use('/api/session',sessionRoutes)
 
 
 

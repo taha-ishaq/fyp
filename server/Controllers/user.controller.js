@@ -73,3 +73,17 @@ try {
   console.error("Error in login user",error)
 }
 }
+
+
+export const getAllUsers=async(req,res)=>{
+  try {
+    const users = await User.find();
+    return res.status(200).json(users)
+  } catch (error) {
+    console.error('Error in getALl User function',error)
+  }
+}
+
+// firstuser
+// firs3tuser
+// firs31tuser

@@ -1,13 +1,16 @@
-import express from 'express';
-import { createTodo, getAllTodos, deleteTodo } from '../Controllers/todo.controller.js';
-import { protectRoute } from '../middleware/protectRoute.js';
+    import express from 'express';
+    import { createTodo, getAllTodos, deleteTodo, markTaskComplete } from '../Controllers/todo.controller.js';
+    import { protectRoute } from '../middleware/protectRoute.js';
 
-const router = express.Router();
+    const router = express.Router();
 
-router.post('/create', protectRoute, createTodo);
+router.post('/:sessionId/todos', protectRoute, createTodo);
 
-router.get('/', protectRoute, getAllTodos);
 
-router.delete('/:id', protectRoute, deleteTodo);
+router.put('/:sessionId/todos/markComplete', protectRoute, markTaskComplete);
 
-export default router;
+router.get('/:sessionId/todos', protectRoute, getAllTodos);
+
+
+router.delete('/:sessionId/todos/:id', protectRoute, deleteTodo);
+    export default router;

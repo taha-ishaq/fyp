@@ -27,6 +27,12 @@ const sessionSchema = new mongoose.Schema({
       ref: "Todo",
     }
   ],
+  semesterGoals: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "SemesterGoal", // Reference to Semester Goals
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now,

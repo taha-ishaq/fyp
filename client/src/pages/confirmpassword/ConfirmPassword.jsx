@@ -6,14 +6,11 @@ import {
   TextField,
   Button,
   IconButton,
-  Checkbox,
-  FormControlLabel,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-const SignUp = () => {
+const ConfirmPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -84,16 +81,16 @@ const SignUp = () => {
               variant="h6"
               sx={{ fontSize: { xs: "1rem", sm: "1.2rem" } }}
             >
-              Join the Journey of Collaborative Learning
+              Secure Your Account
             </Typography>
             <Typography variant="body2" sx={{ fontSize: "0.9rem" }}>
-              Be a part of a community focused on sharing knowledge and
-              unlocking your full potential.
+              Update your password for enhanced security and a better
+              experience.
             </Typography>
           </Box>
         </Box>
 
-        {/* Right Section - Signup Fields */}
+        {/* Right Section - Update Fields */}
         <Box
           sx={{
             width: { lg: "50%", md: "50%", sm: "100%", xs: "100%" },
@@ -118,34 +115,26 @@ const SignUp = () => {
               backgroundColor: "#fff",
             }}
           >
-            {/* Create Account and Already Have an Account */}
+            {/* Update Your Password */}
             <Typography
               variant="h5"
               fontWeight="bold"
               textAlign="start"
               sx={{ marginBottom: "0.5rem", fontSize: "1.4rem" }}
             >
-              Create Your Account
+              Update Your Password
             </Typography>
             <Typography
               variant="body2"
               textAlign="start"
               sx={{ marginBottom: "1rem", fontSize: "0.9rem" }}
             >
-              Already have an account?{" "}
-              <Typography
-                component="span"
-                sx={{ color: "#08C2FF", cursor: "pointer" }}
-              >
-                SIGN IN
-              </Typography>
+              Please fill out the fields below to update your password.
             </Typography>
-
-            {/* Name Field */}
             <Box sx={{ width: "100%" }}>
               <Typography
                 component="label"
-                htmlFor="name"
+                htmlFor="new-password"
                 sx={{
                   fontWeight: "bold",
                   color: "#000",
@@ -155,103 +144,13 @@ const SignUp = () => {
                   fontSize: "0.9rem",
                 }}
               >
-                Name
+                New Password
               </Typography>
               <TextField
-                id="name"
+                id="new-password"
                 fullWidth
-                variant="outlined"
-                sx={{
-                  backgroundColor: "#f5f5f5",
-                  borderRadius: "10px",
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "transparent", // No border by default
-                      borderRadius: "10px", // Default border radius
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#08C2FF", // Border color on hover
-                      borderRadius: "10px", // Ensure border radius on hover
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#08C2FF", // Border color on focus
-                      borderRadius: "10px", // Ensure border radius on focus
-                    },
-                  },
-                  "& .MuiInputBase-input": {
-                    padding: "8px 12px", // Adjust padding as needed
-                    fontSize: "0.9rem", // Font size
-                  },
-                }}
-              />
-            </Box>
-
-            {/* Email Field */}
-            <Box sx={{ width: "100%" }}>
-              <Typography
-                component="label"
-                htmlFor="email"
-                sx={{
-                  fontWeight: "bold",
-                  color: "#000",
-                  marginBottom: "0.3rem",
-                  textAlign: "start",
-                  display: "block",
-                  fontSize: "0.9rem",
-                }}
-              >
-                Email Address
-              </Typography>
-              <TextField
-                id="email"
-                fullWidth
-                variant="outlined"
-                sx={{
-                  backgroundColor: "#f5f5f5",
-                  borderRadius: "10px",
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "transparent", // No border by default
-                      borderRadius: "10px", // Default border radius
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#08C2FF", // Border color on hover
-                      borderRadius: "10px", // Ensure border radius on hover
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#08C2FF", // Border color on focus
-                      borderRadius: "10px", // Ensure border radius on focus
-                    },
-                  },
-                  "& .MuiInputBase-input": {
-                    padding: "8px 12px", // Adjust padding as needed
-                    fontSize: "0.9rem", // Font size
-                  },
-                }}
-              />
-            </Box>
-
-            {/* Password Field */}
-            <Box sx={{ width: "100%" }}>
-              <Typography
-                component="label"
-                htmlFor="password"
-                sx={{
-                  fontWeight: "bold",
-                  color: "#000",
-                  marginBottom: "0.3rem",
-                  textAlign: "start",
-                  display: "block",
-                  fontSize: "0.9rem",
-                }}
-              >
-                Password
-              </Typography>
-              <TextField
-                id="password"
-                fullWidth
-                variant="outlined"
                 type={showPassword ? "text" : "password"}
+                variant="outlined"
                 InputProps={{
                   endAdornment: (
                     <IconButton onClick={togglePasswordVisibility} edge="end">
@@ -264,27 +163,62 @@ const SignUp = () => {
                   borderRadius: "10px",
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "transparent", // No border by default
-                      borderRadius: "10px", // Default border radius
+                      borderColor: "transparent",
+                      borderRadius: "10px",
                     },
-                    "&:hover fieldset": {
-                      borderColor: "#08C2FF", // Border color on hover
-                      borderRadius: "10px", // Ensure border radius on hover
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#08C2FF", // Border color on focus
-                      borderRadius: "10px", // Ensure border radius on focus
-                    },
+                    "&:hover fieldset": { borderColor: "#08C2FF" },
+                    "&.Mui-focused fieldset": { borderColor: "#08C2FF" },
                   },
                   "& .MuiInputBase-input": {
-                    padding: "8px 12px", // Adjust padding as needed
-                    fontSize: "0.9rem", // Font size
+                    padding: "8px 12px",
+                    fontSize: "0.9rem",
                   },
                 }}
               />
             </Box>
 
-            {/* Create Button */}
+            {/* Confirm Password Field */}
+            <Box sx={{ width: "100%" }}>
+              <Typography
+                component="label"
+                htmlFor="confirm-password"
+                sx={{
+                  fontWeight: "bold",
+                  color: "#000",
+                  marginBottom: "0.3rem",
+                  textAlign: "start",
+                  display: "block",
+                  fontSize: "0.9rem",
+                }}
+              >
+                Confirm Password
+              </Typography>
+              <TextField
+                id="confirm-password"
+                fullWidth
+                type={showPassword ? "text" : "password"}
+                variant="outlined"
+                sx={{
+                  backgroundColor: "#f5f5f5",
+                  borderRadius: "10px",
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "transparent",
+                      borderRadius: "10px",
+                    },
+                    "&:hover fieldset": { borderColor: "#08C2FF" },
+                    "&.Mui-focused fieldset": { borderColor: "#08C2FF" },
+                  },
+                  "& .MuiInputBase-input": {
+                    padding: "8px 12px",
+                    fontSize: "0.9rem",
+                  },
+                }}
+              />
+            </Box>
+
+            {/* Update Button */}
+
             <Button
               variant="contained"
               fullWidth
@@ -292,49 +226,14 @@ const SignUp = () => {
                 backgroundColor: "#08C2FF",
                 borderRadius: "7px",
                 color: "#fff",
+                mt: "20px",
                 padding: "0.6rem",
                 fontSize: "1rem",
                 "&:hover": { backgroundColor: "#08A2E5" },
               }}
             >
-              Create Account
+              Update Password
             </Button>
-
-            {/* Terms and Conditions */}
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={termsAccepted}
-                  onChange={(e) => setTermsAccepted(e.target.checked)}
-                  sx={{
-                    color: "#08C2FF",
-                    borderRadius: "10px",
-                    "&.Mui-checked": { color: "#08C2FF" },
-                  }}
-                />
-              }
-              label={
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontSize: "0.8rem",
-                    color: "text.secondary",
-                    textAlign: "start",
-                    alignSelf: "center",
-                    mt: "15px",
-                  }}
-                >
-                  By creating an account, you agree to our{" "}
-                  <Typography
-                    component="span"
-                    sx={{ color: "#08C2FF", cursor: "pointer" }}
-                  >
-                    Privacy Policy
-                  </Typography>
-                  .
-                </Typography>
-              }
-            />
           </Box>
         </Box>
       </Paper>
@@ -342,4 +241,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default ConfirmPassword;

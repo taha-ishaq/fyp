@@ -33,23 +33,23 @@ const Signin = () => {
         sx={{
           width: { xs: "95%", sm: "90%", md: "80%", lg: "80%" },
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          height: "auto",
-          // overflow: "hidden",
+          flexDirection: { xs: "column-reverse", md: "row" }, // Stack columns on smaller screens
+          height: "100vh", // Adjust height automatically
           borderRadius: "10px",
+          overflow: "hidden", // Ensure content stays within bounds
         }}
       >
         {/* Left Section - Image with Typography */}
         <Box
           sx={{
             flex: 1,
-            width: "50%",
+            width: { lg: "50%", md: "50%", sm: "100%", xs: "100%" },
+            height: { xs: "200px", sm: "250px", md: "auto" }, // Ensure height for smaller screens
             position: "relative",
             backgroundImage: `url('login.png')`, // Replace with your image URL
             backgroundSize: "cover",
             backgroundPosition: "center",
-            height: { xs: "200px", md: "auto" },
-            borderRadius: "10px",
+            borderRadius: { lg: "10px 0 0 10px", xs: "10px" }, // Rounded corners for smaller screens
           }}
         >
           {/* Typography at the bottom */}
@@ -69,15 +69,23 @@ const Signin = () => {
               sx={{
                 fontWeight: "bold",
                 marginBottom: "0.5rem",
-                fontSize: "42px",
+                fontSize: {
+                  xs: "1.8rem",
+                  sm: "2rem",
+                  md: "2.5rem",
+                  lg: "3rem",
+                }, // Adjust for smaller screens
               }}
             >
               HIVE
             </Typography>
-            <Typography variant="h6" sx={{ marginBottom: "0.5rem" }}>
-              Collaborative Learning, Unlimited Potential{" "}
+            <Typography
+              variant="h6"
+              sx={{ fontSize: { xs: "1rem", sm: "1.2rem" } }}
+            >
+              Collaborative Learning, Unlimited Potential
             </Typography>
-            <Typography variant="body2" sx={{ fontSize: "18px" }}>
+            <Typography variant="body2" sx={{ fontSize: "0.9rem" }}>
               Empowering students to collaborate, share knowledge, and succeed
               together in their learning journey.
             </Typography>
